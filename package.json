@@ -14,6 +14,7 @@
   "author": "Mateu Aguiló Bosch <mateu.aguilo.bosch@gmail.com>",
   "readmeFilename": "README.md",
   "devDependencies": {
+    "bower": "~1.3.5",
     "grunt": "~0.4.5",
     "grunt-cli": "~0.1.13",
     "grunt-contrib-qunit": "~0.5.1",
