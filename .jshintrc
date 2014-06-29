@@ -1,0 +1,8 @@
+{
+  "globals": {
+    "module": false,
+    "console": true
+  },
+  "devel": false,
+  "strict": true
+}

@@ -1,0 +1,13 @@
+{
+  "name"                   : "LocalStorageCache",
+  "version"                : "1.0.0",
+  "description"            : "Local Storage Cache",
+  "keywords"               : [ "localStorage", "cache", "expiration", "events" ],
+  "author"                 : "Mateu Aguiló Bosch <mateu.aguilo.bosch@gmail.com>",
+  "readmeFilename"         : "README.md",
+  "dependencies"           : {
+    "eventEmitter"         : "~4.2.7"
+  },
+  "ignore"                 : [ "**/.*", "node_modules", "test", ".gitignore" ]
+
+}

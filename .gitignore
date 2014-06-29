@@ -1,0 +1,6 @@
+node_modules/
+.DS_Store
+test/app/components
+npm-debug.json
+.idea
+app/bower_components

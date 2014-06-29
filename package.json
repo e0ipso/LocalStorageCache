@@ -1,0 +1,22 @@
+{
+  "name": "LocalStorageCache",
+  "version": "1.0.0",
+  "description": "Local Storage Cache",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mateu-aguilo-bosch/LocalStorageCache.git"
+  },
+  "scripts": {
+    "postinstall": "bower install",
+    "test": "grunt travis --verbose"
+  },
+  "keywords": ["localStorage", "cache", "expiration", "events"],
+  "author": "Mateu Aguiló Bosch <mateu.aguilo.bosch@gmail.com>",
+  "readmeFilename": "README.md",
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-cli": "~0.1.13",
+    "grunt-contrib-qunit": "~0.5.1",
+    "grunt-contrib-jshint": "~0.10.0"
+  }
+}
