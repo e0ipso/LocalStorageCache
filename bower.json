@@ -9,5 +9,4 @@
     "eventEmitter"         : "~4.2.7"
   },
   "ignore"                 : [ "**/.*", "node_modules", "test", ".gitignore" ]
-
 }
