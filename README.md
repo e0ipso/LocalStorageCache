@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/mateu-aguilo-bosch/LocalStorageCache.svg?branch=master)](https://travis-ci.org/mateu-aguilo-bosch/LocalStorageCache)
+
 LocalStorageCache
 =================
 
