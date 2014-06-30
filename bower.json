@@ -1,9 +1,9 @@
 {
   "name"                   : "LocalStorageCache",
   "version"                : "1.0.0",
-  "description"            : "Local Storage Cache",
-  "keywords"               : [ "localStorage", "cache", "expiration", "events" ],
+  "description"            : "Local storage wrapper with notification and auto expiration capabilities",
+  "keywords"               : [ "localStorage", "cache", "expiration", "events", "EventEmitter" ],
   "author"                 : "Mateu Aguiló Bosch <mateu.aguilo.bosch@gmail.com>",
   "readmeFilename"         : "README.md",
-  "ignore"                 : [ "**/.*", "node_modules", "test", ".gitignore" ]
+  "ignore"                 : [ "**/.*", "node_modules", "test", "dist", ".gitignore" ]
 }

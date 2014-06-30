@@ -2,16 +2,20 @@
 LocalStorageCache
 =================
 
-Javascript wrapper around HTML5 localStorage with auto expiration capabilities.
+**Minimal** Javascript wrapper around HTML5 localStorage with auto expiration
+capabilities.
 
 ## Installation
 You can install this by:
-  - Cloning this repo and using the JS files in the `src` folder.
-  - Doing `bower install LocalStorageCache`.
+  - Cloning this repo and using the `local-storage-expirable.min.js` in the
+    `dist` folder.
+  - Doing `bower install LocalStorageCache`. Then run `grunt` (see the
+    _Minification and Testing_ section).
 
 ## Minification and Testing
-You can minify the source files by running `grunt minify` while in the library
-folder. If you don't have the dependencies, run `npm install` first.
+You can minify the source files by running `grunt` while in the library folder.
+If you don't have the dependencies, run `npm install` first. The result files
+will be stored in the `dist` folder.
 
 You can test the library by running `npm test`. This will check for JSHint
 notices and it will run the QUnit tests in a PhantomJS browser.
@@ -29,6 +33,7 @@ storage.set('key', {
 // Get a variable.
 storage.get('key');
 ```
+
 ### Options
 #### LocalStorageWrapper
 You can pass several options to the LocalStorageWrapper constructor. An object
@@ -48,6 +53,7 @@ var storage, config = {
     listItems: false,
   }
 };
+
 // Create the object instance.
 storage = new LocalStorageWrapper(config);
 ```
@@ -77,8 +83,10 @@ var expirableStorage, config = {
     interval: 300
   }
 };
+
 // Create the object instance.
 expirableStorage = new LocalStorageCache(config);
+
 // You can access the LocalStorageWrapper instance.
 console.debug(expirableStorage.storage);
 ```
