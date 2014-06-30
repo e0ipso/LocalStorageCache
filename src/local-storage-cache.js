@@ -3,7 +3,14 @@
   'use strict';
 
   /**
-   * Expirable local storage.
+   * Expirable local storage object constructor.
+   *
+   * @param {object} config
+   *   The configuration object containing all the keys for the
+   *   LocalStorageWrapper object instantiation and the following extra keys:
+   *     - expiration: An object containing
+   *       - expire: {bool} TRUE to expire objects, FALSE to keep them.
+   *       - interval: {int} Number of seconds during which the object is valid.
    */
   function LocalStorageCache (config) {
     this.storage = new LocalStorageWrapper(config);
@@ -17,8 +24,11 @@
   /**
    * Check if the data associated to the current key is expired.
    *
-   * @param key
+   * @param {string} key
+   *   The key of the object to check.
+   *
    * @returns {boolean}
+   *   TRUE if the object has expired. FALSE otherwise.
    */
   LocalStorageCache.prototype.isExpired = function (key) {
     var expirationDate = this.storage.get(key + '__expiration');
@@ -34,7 +44,10 @@
    * Get an item to the expirable storage.
    *
    * @param key
+   *   The key of the requested object.
+   *
    * @returns {*}
+   *   The requested object or null if expired.
    */
   LocalStorageCache.prototype.get = function (key) {
     if (this.expiration.expire) {
@@ -51,7 +64,9 @@
    * Ovewrite add function to insert expiration date.
    *
    * @param key
+   *   The key identifying the object to be set.
    * @param value
+   *   The actual data to store.
    */
   LocalStorageCache.prototype.set = function (key, value) {
     var isExpirationKey = key.match(/__expiration$/) !== null;
@@ -65,6 +80,9 @@
 
   /**
    * Remove an item.
+   *
+   * @param key
+   *   The key identifying the object to remove.
    */
   LocalStorageCache.prototype.remove = function (key) {
     if (this.expiration.expire) {
