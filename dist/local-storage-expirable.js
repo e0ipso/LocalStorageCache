@@ -154,7 +154,7 @@
         this.events.emit(eventName);
       }
       else {
-        this.events.emit(eventName, context);
+        this.events.emit(eventName, [context]);
       }
     }
   };
