@@ -1,5 +1,5 @@
 /*!
- * Local Storage Cache - v1.0.0 - 2014-06-30
+ * Local Storage Cache - v1.0.0 - 2014-07-01
  * http://mateu-aguilo-bosch.github.io/LocalStorageCache
  *
  * Local storage wrapper with notification and auto expiration capabilities
@@ -150,11 +150,11 @@
    */
   LocalStorageWrapper.prototype.trigger = function (eventName, context) {
     if (this.events) {
-      if (typeof context !== 'undefined') {
+      if (typeof context === 'undefined') {
         this.events.emit(eventName);
       }
       else {
-        this.events.emit(eventName, [context]);
+        this.events.emit(eventName, context);
       }
     }
   };

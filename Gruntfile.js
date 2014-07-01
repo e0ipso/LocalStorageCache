@@ -1,11 +1,7 @@
 (function () {
   'use strict';
   module.exports = function(grunt) {
-    grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-qunit');
+    require('load-grunt-tasks')(grunt);
 
     grunt.initConfig({
       pkg: grunt.file.readJSON('package.json'),
@@ -45,13 +41,7 @@
         // Define the files to lint
         files: ['Gruntfile.js', 'src/**/*.js', 'test/**/*.js'],
         options: {
-          jshintrc: true,
-          // more options here if you want to override JSHint defaults
-          globals: {
-            EventEmitter: true,
-            console: true,
-            module: true
-          }
+          jshintrc: true
         }
       },
       watch: {

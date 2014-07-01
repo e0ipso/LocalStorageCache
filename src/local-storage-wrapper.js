@@ -144,11 +144,11 @@
    */
   LocalStorageWrapper.prototype.trigger = function (eventName, context) {
     if (this.events) {
-      if (typeof context !== 'undefined') {
+      if (typeof context === 'undefined') {
         this.events.emit(eventName);
       }
       else {
-        this.events.emit(eventName, [context]);
+        this.events.emit(eventName, context);
       }
     }
   };
