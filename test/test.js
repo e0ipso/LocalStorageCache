@@ -23,7 +23,7 @@
     };
 
     try {
-      new CustomEvent();
+      new CustomEvent('test');
       customEventsSupported = true;
     }
     catch (e) {}
