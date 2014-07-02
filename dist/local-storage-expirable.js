@@ -1,5 +1,5 @@
 /*!
- * Local Storage Cache - v1.0.0 - 2014-07-01
+ * Local Storage Cache - v1.0.0 - 2014-07-02
  * http://mateu-aguilo-bosch.github.io/LocalStorageCache
  *
  * Local storage wrapper with notification and auto expiration capabilities
@@ -7,6 +7,8 @@
  */
 (function () {
   'use strict';
+
+  var self = this;
   /**
    * Local Storage Wrapper constructor.
    *
@@ -157,6 +159,25 @@
         this.events.emit(eventName, context);
       }
     }
+    // Trigger a jQuery event if jQuery is defined.
+    if (typeof jQuery !== 'undefined') {
+      jQuery.trigger(eventName, context);
+    }
+    // Broadcast an AngularJS event if defined.
+    if (typeof $rootScope !== 'undefined') {
+      $rootScope.$broadcast(eventName, context);
+    }
+    // Wrap the CustomEvent in a try catch since some browsers don't support it.
+    try {
+      var event = new CustomEvent(eventName, {
+        detail: context,
+        bubbles: true,
+        cancelable: true
+      });
+      // Dispatch the event on the executing context.
+      self.dispatchEvent(event);
+    }
+    catch (e) {}
   };
 
   /** @var {LocalStorageWrapper} Return a global in the executing context */

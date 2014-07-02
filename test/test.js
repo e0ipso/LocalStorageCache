@@ -6,15 +6,38 @@
     assert.ok(LocalStorageWrapper, 'LocalStorageWrapper global object exists.' );
     assert.ok(LocalStorageCache, 'LocalStorageCache global object exists.' );
 
-    var prefix = 'testingSuite';
+    var prefix = 'testingSuite', triggered = false, customEventsSupported = false;
     // Test localStorage cache.
     var wrapper = new LocalStorageWrapper({
-      prefix: prefix
+      prefix: prefix,
+      notify: {
+        setItem: true,
+        getItem: false,
+        removeItem: false,
+        listItems: false
+      }
     });
 
     var object = {
       key: 'value'
     };
+
+    try {
+      new CustomEvent();
+      customEventsSupported = true;
+    }
+    catch (e) {}
+
+    if (customEventsSupported) {
+      var listener = function (event) {
+        triggered = true;
+        assert.ok(event.detail.prefix === 'testingSuite.', 'Correct event prefix context set.');
+        assert.ok(event.detail.value === JSON.stringify(object), 'Correct event value context set.');
+        // Once is enough.
+        window.removeEventListener(event.type, listener);
+      };
+      window.addEventListener('local-storage-set', listener);
+    }
 
     var index, list, items = 10;
     for (index = 0; index < items; index++) {
@@ -41,5 +64,10 @@
     storage.set('test', object);
     storage.remove('test');
     assert.ok(storage.get('test') === null, 'Removed object.');
+
+    if (customEventsSupported) {
+      // Make sure the event was triggered if CustomEvent is supported.
+      assert.ok(triggered, 'Event was triggered.');
+    }
   });
 }());
